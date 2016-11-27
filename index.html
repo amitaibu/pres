@@ -529,173 +529,23 @@ translate lang id =
 				</aside>
 			</section>
 
-			<section>
-				<h2>Not everything is in Types</h2>
-			</section>
+            <!-- Compiler assitance -->
+            <section>
+                <img src="https://cloud.githubusercontent.com/assets/125707/20651071/8335f4e2-b4e6-11e6-801a-99c5c262673f.jpg" alt="" />
+            </section>
 
-			<!-- Counter Example -->
-			<section>
-					<img src="https://cloud.githubusercontent.com/assets/125707/9739824/2fcc8cd0-565a-11e5-8024-0d01200773cd.jpg" />
-			</section>
+            <!-- elm-package diff -->
+            <section>
+                <img src="https://cloud.githubusercontent.com/assets/125707/20651058/46852888-b4e6-11e6-9934-d8b2ed2fe4f0.jpg" alt="" />
+            </section>
 
-			<section>
-				<pre style="width: 100%;"><code data-trim class>
-update : Msg -> Model -> Model
-update msg model =
-    case msg of
-        Decrement ->
-            model - 1
+            <!-- Yesod -->
+            <section>
+                <img src="https://cloud.githubusercontent.com/assets/125707/20651098/0daf5924-b4e7-11e6-846d-5f8f7a7abe37.jpg" alt="" />
+            </section>
 
 
 
-
-
-        Increment ->
-            model + 1
-
-				</code></pre>
-				<aside class="notes" data-markdown>
-		    </aside>
-			</section>
-
-			<section>
-				<pre style="width: 100%;"><code data-trim class>
-update : Msg -> Model -> Model
-update msg model =
-    case msg of
-        Decrement ->
-            let
-                newModel =
-                    if model < 1 then 0 else model - 1
-            in
-                newModel
-
-        Increment ->
-            model + 1
-
-				</code></pre>
-				<aside class="notes" data-markdown>
-		    </aside>
-			</section>
-
-
-			<section>
-				<h3>Buisness Logic requires Testing</h3>
-
-				<aside class="notes" data-markdown>
-					* Who writes unit tests in JS?
-					* Who enjoys it?
-					* For the viewers at home, very few raised there hands, can't blame them
-					* Probably the same amount of joy and happiness those guys in the back of
-					Kim Jung Un must be feeling.
-				</aside>
-			</section>
-
-			<!-- Kim Jung Un 1 -->
-			<section data-background="https://cloud.githubusercontent.com/assets/125707/14984664/8020228e-114c-11e6-9db9-e986cc9f8398.jpg">
-
-				<aside class="notes" data-markdown>
-					* Probably the same amount of joy and happiness those guys in the back of
-					Kim Jung Un must be feeling.
-				</aside>
-			</section>
-
-			<!-- Kim Jung Un 2 -->
-			<section data-background="https://cloud.githubusercontent.com/assets/125707/14984664/8020228e-114c-11e6-9db9-e986cc9f8398.jpg">
-         <h2 style="background-color: black; opacity: 0.85; padding: 20px; ">
-						Unit tests
-					</h2>
-
-					<aside class="notes" data-markdown>
-						* What makes unit tests easy Elm
-						* Time to talk about "Pure functions and side effects"
-					</aside>
-       </section>
-
-			 <!-- Side Effects -->
-			 <section>
-				<h2>Pure Functions & Side Effects</h2>
-
-				<aside class="notes" data-markdown>
-					* Elm is a black box with no connection to outside world
-				</aside>
-       </section>
-
-       <section>
-         <pre style="width: 100%;"><code class="elm" data-trim>
--- MODEL
-type alias Model = Int
-
--- UPDATE
-type Msg
- = Fetch
- | FetchSucceed Int
- | FetchFail Http.Error
-         </code></pre>
-
-			 <aside class="notes" data-markdown>
-          * Simple counter example, data from server
-          * Action - nothing happens by itself
-          * Code not compiled, for simplicity and brevity
-				</aside>
-       </section>
-
-       <section>
-         <pre style="width: 100%;"><code data-trim>
-update : Msg -> Model -> (Model, Cmd Msg)
-update msg model =
- case msg of
-   Fetch ->
-     ( model
-     , Task.perform FetchFail FetchSucceed (Http.get "https://api.example.com")
-     )
-
-   FetchSucceed count ->
-     ( count, Cmd.none)
-
-   FetchFail _ ->
-     ( model, Cmd.none )
-
-         </code></pre>
-				 <aside class="notes" data-markdown>
-					 * No HTTP happens.
-					 * Encourages us to be better developers
-					</aside>
-       </section>
-
-			<section>
-				<h2>Yeoman Generator</h2>
-				<small>https://github.com/Gizra/generator-elmlang</small>
-				<div>
-					<ul>
-						<li>Gulp</li>
-						<li>browserSync</li>
-						<li>Auto-compile</li>
-						<li>Sass</li>
-						<li>Bundle and Deploy to gh-pages</li>
-					</ul>
-				</div>
-			</section>
-
-			<section>
-				<img src="https://cloud.githubusercontent.com/assets/125707/11408428/a63eb646-93c1-11e5-8e6d-b5dd54070018.jpg" />
-
-				<aside class="notes" data-markdown>
-					* Structured app
-					* Travis integration
-					* So, I read somewhere that a good presentation should end with a motif that was used in the beginning.
-				</aside>
-			</section>
-
-			<!-- Cameron Diaz -->
-			<section>
-				<img src="https://cloud.githubusercontent.com/assets/125707/16362419/fff3ffe6-3bb6-11e6-84a2-8e457942e999.jpg" class="stretch" />
-
-				<aside class="notes" data-markdown>
-					* One of her quotes, and quite incredibly, I feel that it really encapsulats well this session.
-					* I would kiss a frog even if there were no promise of a Prince Charming popping out of it. I love frogs. I'd lick him.
-				</aside>
-			</section>
 
 			<!-- Last slide -->
 			<section data-background="https://cloud.githubusercontent.com/assets/125707/11408842/6abc3708-93c4-11e5-8515-bf92a59cf8ea.jpg">
