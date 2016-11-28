@@ -921,8 +921,6 @@ class GroupCheckTest extends UnitTestCase {
       ->load($this->entityId)
       ->willReturn(NULL);
 
-    $this->getAccessResult();
-
     $group_check = new GroupCheck($this->entityTypeManager->reveal(), $this->ogAccess->reveal());
     $result = $group_check->access($this->user->reveal(), $this->route->reveal(), $this->routeMatch->reveal(), $this->entityTypeId, $this->entityId);
 
