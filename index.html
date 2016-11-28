@@ -49,7 +49,7 @@
                 <ul>
                     <li>I'm going to talk</li>
                     <li>And then some more</li>
-                    <li>And then I'll condlude it all, although there's isn't
+                    <li>And then I'll conclude it all, although there's isn't
                         really a punch line. You'll have to come with one yourself
                     </li>
                 </ul>
@@ -57,16 +57,17 @@
 
             <!-- Nutella -->
             <section>
-                <img src="https://cloud.githubusercontent.com/assets/125707/20650920/bd0bf7e2-b4e2-11e6-8e77-fd724b4e1536.jpg" alt="" />
+               <img src="https://cloud.githubusercontent.com/assets/125707/20650920/bd0bf7e2-b4e2-11e6-8e77-fd724b4e1536.jpg" alt="" />
             </section>
 
             <!-- Orangutan -->
             <section>
-                <img src="https://cloud.githubusercontent.com/assets/125707/20650928/03860564-b4e3-11e6-8677-81b0b4320550.jpg" alt="" />
+               <img src="https://cloud.githubusercontent.com/assets/125707/20650928/03860564-b4e3-11e6-8677-81b0b4320550.jpg" alt="" />
             </section>
 
             <section>
                 <h2>Functional Programing</h2>
+				<small>and other relativly accurate stories</small>
                 <aside class="notes" data-markdown>
                     * Lean back, I'm going to take a detour, so you can see the
                     path I'm walking on for the past 2 years.
@@ -83,7 +84,6 @@
                 </span>
 
                 <aside class="notes" data-markdown>
-                    * Past 7 years I have been a stay home mom, and/ or cto
                 </aside>
             </section>
 
@@ -94,17 +94,21 @@
                     <li>Yesod (Haskell)</li>
                     <li>Drupal</li>
                 </ul>
+
+				<aside class="notes" data-markdown>
+				</aside>
             </section>
 
             <!-- Budget Googles -->
             <section>
                 <img src="https://cloud.githubusercontent.com/assets/125707/20650852/5836e1d4-b4e1-11e6-870c-d9387fd5ae74.jpg" alt="" />
+
+				<aside class="notes" data-markdown>
+				</aside>
             </section>
 
             <section>
-                <div class="">
-                    Clients pay for the features
-                </div>
+                <h2>Clients pay for the features</h2>
                 <small>not the bugs</small>
                 <aside class="notes" data-markdown>
                     * Need to fix, costs you money
@@ -116,9 +120,7 @@
 
             <section>
                 <h2>Articulate the problem</h2>
-                <div class="">
-                    It's not about fighting bugs. It's about setting the priorities.
-                </div>
+                <small>It's not about fighting bugs. It's about setting our priorities</small>
 
                 <aside class="notes" data-markdown>
                     * I don't care about concurrency
@@ -131,6 +133,7 @@
 
             <section>
                 <h2>Correctness</h2>
+				<small>and my expectations from computers</small>
             </section>
 
 			<!-- Counter Example -->
@@ -541,14 +544,20 @@ translate lang id =
             <!-- Yesod -->
             <section>
                 <img src="https://cloud.githubusercontent.com/assets/125707/20651098/0daf5924-b4e7-11e6-846d-5f8f7a7abe37.jpg" alt="" />
+				<aside class="notes" data-markdown>
+				</aside>
             </section>
 
             <section>
                 <h2>Finally! Drupal (8)!</h2>
+				<aside class="notes" data-markdown>
+				</aside>
             </section>
 
             <section>
                 <h2>OG8</h2>
+				<aside class="notes" data-markdown>
+				</aside>
             </section>
 
             <!-- PR removes code -->
@@ -563,6 +572,13 @@ translate lang id =
 
             <!-- Safe guards -->
             <section>
+				<h2>Safe Guards</h2>
+				<pre>
+					<code class="elm" data-trim>
+throw new \Exception();
+					</code>
+				</pre>
+
                 <img src="https://cloud.githubusercontent.com/assets/125707/20651142/dca0c8e4-b4e7-11e6-957e-2ee78b2cfc44.jpg" alt="" />
             </section>
 
@@ -574,6 +590,165 @@ translate lang id =
                     <li>Functional testing</li>
                 </ul>
             </section>
+
+			<section>
+				<pre>
+					<code class="php" data-trim>
+/**
+ * Tests the group check access.
+ *
+ * @group og
+ * @coversDefaultClass \Drupal\og\Access\GroupCheck
+ */
+class GroupCheckTest extends UnitTestCase {
+
+  /**
+   * The entity type manager prophecy used in the test.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeManagerInterface|\Prophecy\Prophecy\ObjectProphecy
+   */
+  protected $entityTypeManager;
+
+  /**
+   * The entity type prophecy used in the test.
+   *
+   * @var \Drupal\Core\Entity\EntityTypeInterface|\Prophecy\Prophecy\ObjectProphecy
+   */
+  protected $entityType;
+
+  /**
+   * The entity storage prophecy used in the test.
+   *
+   * @var \Drupal\Core\Entity\EntityStorageInterface|\Prophecy\Prophecy\ObjectProphecy
+   */
+  protected $entityStorage;
+
+  /**
+   * The OG access service prophecy used in the test.
+   *
+   * @var \Drupal\og\OgAccess|\Prophecy\Prophecy\ObjectProphecy
+   */
+  protected $ogAccess;
+
+  /**
+   * The route service prophecy used in the test.
+   *
+   * @var \Symfony\Component\Routing\Route|\Prophecy\Prophecy\ObjectProphecy
+   */
+  protected $route;
+
+  /**
+   * A user used in the test.
+   *
+   * @var \Drupal\user\UserInterface|\Prophecy\Prophecy\ObjectProphecy
+   */
+  protected $user;
+
+  /**
+   * The entity type ID of the test group.
+   *
+   * @var string
+   */
+  protected $entityTypeId;
+
+  /**
+   * The bundle ID of the test group.
+   *
+   * @var string
+   */
+  protected $bundle;
+
+  /**
+   * The test group entity used in the test..
+   *
+   * @var \Drupal\Core\Entity\EntityInterface|\Prophecy\Prophecy\ObjectProphecy
+   */
+  protected $group;
+
+  /**
+   * A random entity ID.
+   *
+   * @var int
+   */
+  protected $entityId;
+
+  /**
+   * The group manager used in the test.
+   *
+   * @var \Drupal\og\GroupTypeManager|\Prophecy\Prophecy\ObjectProphecy
+   */
+  protected $groupTypeManager;
+
+  /**
+   * The access result used in the test.
+   *
+   * @var \Drupal\Core\Access\AccessResultInterface|\Prophecy\Prophecy\ObjectProphecy
+   */
+  protected $accessResult;
+
+  /**
+   * The route match service used in the test.
+   *
+   * @var \\Drupal\Core\Routing\RouteMatchInterface|\Prophecy\Prophecy\ObjectProphecy
+   */
+  protected $routeMatch;
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp() {
+    $this->entityTypeManager = $this->prophesize(EntityTypeManagerInterface::class);
+    $this->entityType = $this->prophesize(EntityTypeInterface::class);
+    $this->entityStorage = $this->prophesize(EntityStorageInterface::class);
+    $this->ogAccess = $this->prophesize(OgAccessInterface::class);
+    $this->route = $this->prophesize(Route::class);
+    $this->routeMatch = $this->prophesize(RouteMatchInterface::class);
+
+    $this->entityTypeId = $this->randomMachineName();
+    $this->bundle = $this->randomMachineName();
+    $this->entityId = rand(10, 50);
+    $this->groupTypeManager = $this->prophesize(GroupTypeManager::class);
+    $this->user = $this->prophesize(AccountInterface::class);
+    $this->group = $this->prophesize(EntityInterface::class);
+    $this->accessResult = $this->prophesize(AccessResultInterface::class);
+
+    $container = new ContainerBuilder();
+    $container->set('og.group_type_manager', $this->groupTypeManager->reveal());
+    \Drupal::setContainer($container);
+  }
+
+  /**
+   * Tests a non-existing group.
+   *
+   * @covers ::access
+   */
+  public function testNoGroup() {
+    $this
+      ->entityTypeManager
+      ->getDefinition($this->entityTypeId, FALSE)
+      ->willReturn($this->entityType);
+
+    $this
+      ->entityTypeManager
+      ->getStorage($this->entityTypeId)
+      ->willReturn($this->entityStorage);
+
+    $this->entityStorage
+      ->load($this->entityId)
+      ->willReturn(NULL);
+
+    $this->getAccessResult();
+
+    $group_check = new GroupCheck($this->entityTypeManager->reveal(), $this->ogAccess->reveal());
+    $result = $group_check->access($this->user->reveal(), $this->route->reveal(), $this->routeMatch->reveal(), $this->entityTypeId, $this->entityId);
+
+    $this->assertTrue($result->isForbidden());
+  }
+}
+					</code>
+				</pre>
+
+			</section>
 
             <section>
                 <h2>Port Drupal to Haskell?</h2>
@@ -587,7 +762,6 @@ translate lang id =
                     * Drush/ Drupal console
                     * Tons of code we didn't have to write, or test.
                 </aside>
-
             </section>
 
 
