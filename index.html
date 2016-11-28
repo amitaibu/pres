@@ -565,11 +565,6 @@ translate lang id =
                 <img src="https://cloud.githubusercontent.com/assets/125707/20651123/985dab0c-b4e7-11e6-9ae3-e01104c31cbc.jpg" alt="" />
             </section>
 
-            <!-- OG's entities graph -->
-            <section>
-                @todo: Add entities graph
-            </section>
-
             <!-- Safe guards -->
             <section>
 				<h2>Safe Guards</h2>
@@ -585,12 +580,180 @@ throw new \Exception();
             <section>
                 <h2>Be your devil's advocate</h2>
                 <ul>
-                    <li>Unit testing</li>
-                    <li>Kernel testing</li>
                     <li>Functional testing</li>
+                    <li>Kernel testing</li>
+                    <li>Unit testing</li>
                 </ul>
             </section>
 
+			<!-- Functional test -->
+			<section>
+				<pre>
+					<code class="php" data-trim>
+/**
+ * Tests the formatter changes by user and membership.
+ */
+public function testGroupTab() {
+  $this->drupalLogin($this->user1);
+  $this->drupalGet('group/node/' . $this->group->id() . '/admin');
+  $this->assertResponse(200);
+
+  $this->drupalGet('group/node/' . $this->nonGroup->id() . '/admin');
+  $this->assertResponse(403);
+}
+					</code>
+				</pre>
+			</section>
+
+			<!-- Kernel test -->
+			<section>
+				<pre>
+					<code class="php" data-trim>
+/**
+ * Tests access to the create entity form through the user interface.
+ *
+ * @group og
+ * @coversDefaultClass \Drupal\og\Form\GroupSubscribeForm
+ */
+class GroupSubscribeFormTest extends KernelTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static $modules = [
+    'system',
+    'user',
+    'field',
+    'node',
+    'og',
+  ];
+
+  /**
+   * A user object.
+   *
+   * @var \Drupal\user\Entity\User
+   */
+  protected $user1;
+
+
+  /**
+   * A group entity.
+   *
+   * @var \Drupal\node\Entity\Node
+   */
+  protected $group1;
+
+  /**
+   * A group entity.
+   *
+   * @var \Drupal\node\Entity\Node
+   */
+  protected $group2;
+
+  /**
+   * A group entity.
+   *
+   * @var \Drupal\node\Entity\Node
+   */
+  protected $group3;
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    parent::setUp();
+
+    $this->installConfig(['og']);
+    $this->installEntitySchema('og_membership');
+    $this->installEntitySchema('user');
+    $this->installEntitySchema('node');
+    $this->installSchema('system', 'sequences');
+
+    // Create bundles.
+    $groupBundle1 = Unicode::strtolower($this->randomMachineName());
+    $groupBundle2 = Unicode::strtolower($this->randomMachineName());
+    $groupBundle3 = Unicode::strtolower($this->randomMachineName());
+
+    // Define the entities as groups.
+    Og::groupTypeManager()->addGroup('node', $groupBundle1);
+    Og::groupTypeManager()->addGroup('node', $groupBundle2);
+    Og::groupTypeManager()->addGroup('node', $groupBundle3);
+
+    // Create node author user.
+    $user = User::create(['name' => $this->randomString()]);
+    $user->save();
+
+    // Create groups.
+    $this->group1 = Node::create([
+      'type' => $groupBundle1,
+      'title' => $this->randomString(),
+      'uid' => $user->id(),
+    ]);
+    $this->group1->save();
+
+    $this->group2 = Node::create([
+      'type' => $groupBundle2,
+      'title' => $this->randomString(),
+      'uid' => $user->id(),
+    ]);
+    $this->group2->save();
+
+    // Create an unpublished node, so users won't have access to it.
+    $this->group3 = Node::create([
+      'type' => $groupBundle3,
+      'title' => $this->randomString(),
+      'uid' => $user->id(),
+      'status' => NODE_NOT_PUBLISHED,
+    ]);
+    $this->group3->save();
+
+    // Change the permissions of group to "subscribe".
+    /** @var OgRole $role */
+    $role = OgRole::getRole('node', $groupBundle1, OgRoleInterface::ANONYMOUS);
+    $role
+      ->grantPermission('subscribe')
+      ->save();
+
+    // Change the permissions of group to allow "subscribe without approval".
+    $role = OgRole::getRole('node', $groupBundle2, OgRoleInterface::ANONYMOUS);
+    $role
+      ->grantPermission('subscribe without approval')
+      ->save();
+
+    // Change the permissions of group to allow "subscribe without approval" on
+    // the unpublished node.
+    $role = OgRole::getRole('node', $groupBundle3, OgRoleInterface::ANONYMOUS);
+    $role
+      ->grantPermission('subscribe without approval')
+      ->save();
+
+  }
+
+  /**
+   * Tests subscribe confirmation related text.
+   *
+   * @covers ::isStateActive
+   */
+  public function testIsStateActive() {
+    $user = $this->createUser(['access content']);
+
+    /** @var GroupSubscribeForm $form */
+    $form = \Drupal::entityManager()->getFormObject('og_membership', 'subscribe');
+
+    // Pending membership.
+    $membership_pending = OgMembership::create();
+    $membership_pending
+      ->setGroup($this->group1)
+      ->setUser($user);
+
+    $form->setEntity($membership_pending);
+    $this->assertFalse($form->isStateActive());
+  }
+					</code>
+				</pre>
+			</section>
+
+			<!-- Unit test -->
 			<section>
 				<pre>
 					<code class="php" data-trim>
@@ -760,14 +923,9 @@ class GroupCheckTest extends UnitTestCase {
                     * Association
                     * Pantheon/ Platform/ Amazee IO
                     * Drush/ Drupal console
-                    * Tons of code we didn't have to write, or test.
+                    * Tons of code we didn't have to write, or test
                 </aside>
             </section>
-
-
-
-
-
 
 			<!-- Last slide -->
 			<section data-background="https://cloud.githubusercontent.com/assets/125707/11408842/6abc3708-93c4-11e5-8515-bf92a59cf8ea.jpg">
