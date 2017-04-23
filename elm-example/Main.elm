@@ -7,7 +7,7 @@ import Html.Attributes exposing (style)
 main : Html a
 main =
     div [ style styleWrapper ]
-        [ text "Total cart:"
+        [ text "Total cart: "
         , div [] [ text <| toString <| getTotalCart cartWithItems ]
         ]
 
@@ -98,4 +98,5 @@ styleWrapper =
     , ( "align-items", "center" )
     , ( "justify-content", "center" )
     , ( "margin-top", "100px" )
+    , ( "font-size", "200%" )
     ]
