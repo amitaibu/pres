@@ -114,11 +114,12 @@
             </section>
 
             <section>
-              <h2>How to Solve it</h2>
+              <h2>How to Solve it, 2017</h2>
       				<ul>
       					<li>Find and develop only the essence</li>
       					<li>Timebox the efforts</li>
       				</ul>
+
               <aside class="notes" data-markdown>
               </aside>
             </section>
@@ -545,16 +546,6 @@ translate lang id =
                 <img src="https://cloud.githubusercontent.com/assets/125707/20682288/10353f28-b5b0-11e6-9e49-afc4b980afc1.jpg" alt="" />
             </section>
 
-            <!-- Budget Googles -->
-            <section>
-                <img src="https://cloud.githubusercontent.com/assets/125707/20650852/5836e1d4-b4e1-11e6-870c-d9387fd5ae74.jpg" alt="" />
-
-                <aside class="notes" data-markdown>
-                  * Circle back to our budget googles.
-                  * Many advantages, but still one big disadvantage: TMI: Too much infomation
-                </aside>
-            </section>
-
             <!-- BOA -->
             <section>
                <img src="https://cloud.githubusercontent.com/assets/125707/21800221/521feffa-d725-11e6-9489-c2ab5ddcea16.gif" alt="" />
@@ -570,6 +561,60 @@ translate lang id =
             <section>
                 <img src="https://cloud.githubusercontent.com/assets/125707/20651098/0daf5924-b4e7-11e6-846d-5f8f7a7abe37.jpg" alt="" />
             </section>
+
+            <section>
+              <pre>
+                <code class="yaml" data-trim>
+-- config/models
+
+User
+    ident Text
+    password Text Maybe
+    verkey Text Maybe -- Used for resetting passwords
+    verified Bool
+    UniqueUser ident
+    deriving Typeable
+
+AccessToken json
+    created UTCTime
+    userId UserId
+    token Text
+    UniqueUserId userId
+    UniqueToken token
+    deriving Eq
+    deriving Show
+
+              </code>
+            </pre>
+
+            <aside class="notes" data-markdown>
+              * Using webdata, starting with NotAsked
+            </aside>
+          </section>
+
+          <section>
+            <pre>
+              <code class="yaml" data-trim>
+-- config/routes
+
+/api/login-token LoginTokenR GET
+            </code>
+          </pre>
+
+          <aside class="notes" data-markdown>
+            * Using webdata, starting with NotAsked
+          </aside>
+        </section>
+
+
+            <section>
+              <img src="https://cloud.githubusercontent.com/assets/125707/25312085/a6a42a98-2818-11e7-9479-7e70ab828850.jpg" alt="">
+
+              <aside class="notes" data-markdown>
+                * Using webdata, starting with NotAsked
+              </aside>
+            </section>
+
 
             <section>
                 <div class="">
