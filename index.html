@@ -111,18 +111,19 @@
                 * Basically it means, don't listen to your clients.
                 * I offer dinner to my kids. I know that at this point of time they can handle only fruits.
                 * So I offer fruits, but they insist also on Sandwich. Pizza. Pasta. Salad. And cake. And Milkshake. And potato chips
-                and on that slimmy sugary thingy I later need to clean up. And tortia. And biscuits. And Salmon. Oh boy, they are so into Salmon.
+                and on that slimmy sugary thingy I later need to clean up. And tortia. And biscuits. And Salmon. Oh boy, they claim they are so into Salmon.
                 And Vanilla cake, and some chocolate to balance it. And yogurt.
                 * And they really insist. And I know it's going to end bad, but I try to be a good dad.
                 * But those small, manipulative bastards - and honest to god I'm not even sure if they are really mine -
                 it's obvious they get kick out of it, eventhough it's clear they are not going to eat any of it.
                 * And then my wife joins, and starts with her accusations and going all crazy
-                * and then I go crazy and so is everybody, And it ends up me yelling at my wife "you and your mother are taking me down the grave!""
-                * So a project is like that.
-                * Not sure where that sentence came from.
+                * and then I go crazy and so is everybody, And it ends up me yelling at my wife "you and your mother are taking me down the grave!"
+                * So like that - serve your clients only fruits. Only what they really want and can afford.
+                * Where did that come from?! When I rehersed I didn't have that sentence. Please don't tell it to my wife. Or her mother
                 * Project is the sum of it's issues
                 * Setting the hours is setting the expectations
                 * Also self fullfiling prophesy - developer can code for ever.
+                * Everybody can set estimation
                 * Time is more important than the task
                 * Escalation
                 * It applies also to contribution, where instead of money you have moral.
@@ -132,7 +133,8 @@
             <section>
               <h2>Cost of bugs</h2>
               <aside class="notes" data-markdown>
-                  * For the crowd at home, I'm shaking my hand furiously.
+                  * The thing that ruins our plans and estimation is bugs.
+                  * eww - bugs. For the crowd at home, I'm shaking my hand furiously.
                   * Bugs are very costly (even more than they might appear)
                   * Need to fix, costs you money
                   * Takes your time - deadline
@@ -405,12 +407,11 @@ viewUser webDataUser =
 
             <!-- BOA -->
             <section>
+                http://inbox-simulation.gizra.com/
                <img src="https://cloud.githubusercontent.com/assets/125707/21800221/521feffa-d725-11e6-9489-c2ab5ddcea16.gif" alt="" />
 
                <aside class="notes" data-markdown>
-                 * New technique we are using as pre-sale is create proof of concepts.
-                 * Post Truth era. I don't think they will rememer it in 50 years,
-                 but hopefuly remember enough time for choosing us.
+
                </aside>
             </section>
 
@@ -451,7 +452,6 @@ AccessToken json
             </pre>
 
             <aside class="notes" data-markdown>
-              * Using webdata, starting with NotAsked
             </aside>
           </section>
 
@@ -465,7 +465,6 @@ AccessToken json
           </pre>
 
           <aside class="notes" data-markdown>
-            * Using webdata, starting with NotAsked
           </aside>
         </section>
 
@@ -474,7 +473,6 @@ AccessToken json
               <img src="https://cloud.githubusercontent.com/assets/125707/25312085/a6a42a98-2818-11e7-9479-7e70ab828850.jpg" alt="">
 
               <aside class="notes" data-markdown>
-                * Using webdata, starting with NotAsked
               </aside>
             </section>
 
@@ -502,6 +500,7 @@ addStylesheet $ StaticR css_bootstrap_css
                 </pre>
 
                 <aside class="notes" data-markdown>
+                  * When you get a taste of the type safety, hard to stop.
                   * What can possibly go wrong?
                 </aside>
             </section>
@@ -520,6 +519,8 @@ addStylesheet $ StaticR css_bootstrap_css
               <img src="https://cloud.githubusercontent.com/assets/125707/25312125/fff0b214-2819-11e7-9735-7e1687c7e481.jpg" alt="" />
 
               <aside class="notes" data-markdown>
+                * I've delibretly didn't add "entity" and "node", so it's
+                confusing for you as it was for us back then.
               </aside>
             </section>
 
@@ -529,6 +530,12 @@ addStylesheet $ StaticR css_bootstrap_css
               <img src="https://cloud.githubusercontent.com/assets/125707/25312121/d78afc3a-2819-11e7-9b42-20a51efbcada.jpg" alt="" />
 
               <aside class="notes" data-markdown>
+                * User are not nodes. Pending membership isn't natural for a piece of content.
+                * I don't care about edge cases.
+                * Abusing field API, keeping sync between field storage and entity storage
+                so you could decide if to work via field API or via entity API.
+                * I don't know if for that idea I will one day be punished, or that
+                is the punishment.
               </aside>
             </section>
 
@@ -538,10 +545,7 @@ addStylesheet $ StaticR css_bootstrap_css
               <h4>OG8</h4>
               <img src="http://www.gizra.com/assets/images/posts/og8-development-mindset/image2.jpg" alt="" />
               <aside class="notes" data-markdown>
-                  * As simple as it looks, I was actually able to get it wrong. Twice.
-                  * First a group was it own entity, and after membership was used also for non-users.
-                  * There were good reasons why I did it, but they were wrong
-                  * ... and the next slide shows what was wrong.
+
               </aside>
             </section>
 
@@ -549,8 +553,9 @@ addStylesheet $ StaticR css_bootstrap_css
             <section>
                 <img src="https://cloud.githubusercontent.com/assets/125707/20651123/985dab0c-b4e7-11e6-9ae3-e01104c31cbc.jpg" alt="" />
                 <aside class="notes" data-markdown>
-                    * The mindset. Trying to add more features.
-                    * No code, less code to maintin, don't lose time, less chance for bugs.
+                    * The benefits of removing code: No bugs, doesn't take time, easy to maintain.
+                    * The mindset: add feature, not reduce from previous version.
+                    * Drupal9 are you in the audience, I'll repeat it for you. We add features...
                 </aside>
             </section>
 
@@ -573,14 +578,17 @@ addStylesheet $ StaticR css_bootstrap_css
 
             <section>
                 <h2>Be your own devil's advocate</h2>
-            </section>
 
-            <section>
-              <ul>
-                  <li>Functional testing</li>
-                  <li>Kernel testing</li>
-                  <li>Unit testing</li>
-              </ul>
+                <ul>
+                    <li>Functional testing</li>
+                    <li>Kernel testing</li>
+                    <li>Unit testing</li>
+                </ul>
+
+                <aside class="notes" data-markdown>
+                    * You might heard in my tone I'm not super excited about D8
+                    * But I think the tests are something really right.
+                </aside>
             </section>
 
       <!-- Functional test -->
@@ -755,17 +763,34 @@ class GroupSubscribeFormTest extends KernelTestBase {
 
         <aside class="notes" data-markdown>
           * How much time do we have?
+          * I'll give an example from OG8
         </aside>
       </section>
 
       <!-- Article create 1 field -->
       <section>
         <img src="https://cloud.githubusercontent.com/assets/125707/25322101/7cfcac66-28bc-11e7-9766-7dbe43aad77a.jpg" alt="">
+        <aside class="notes" data-markdown>
+          * No site wide permissions to create article
+          * But OG permissions to create article
+          * Audience field is not required.
+          * We should prevent access bypass.
+        </aside>
       </section>
 
       <!-- Article create 2 fields -->
       <section>
         <img src="https://cloud.githubusercontent.com/assets/125707/25322081/5971709c-28bc-11e7-8259-2bbb9e08fd29.jpg" alt="">
+        <aside class="notes" data-markdown>
+          * The same thing we love, is the thing we should also worry from
+          * We get it for free
+          * You sit with your team. Should we do this and that. Well, "we get it for free"
+          * But is it really free?
+          * When you will run OG, that security issue I have to cover has a cost in complexity.
+          On each refresh you might be hitting that complexity.
+          * I wrote a group functionlity in Yesod in 5 files. Just what I needed,
+          no more and no less.
+        </aside>
       </section>
 
 
@@ -783,6 +808,11 @@ class GroupSubscribeFormTest extends KernelTestBase {
               * Drush/ Drupal console
               * Tons of code we didn't have to write, or test
               * 15 years of experience!
+              * I remember Dris saying back in CPH that we're tied in the hip to the PHP community.
+              * Are we? Are we because we are constantly choosing, or because we're affraid of questioning.
+              * I'm not advocating to let go of PHP, but about letting go of the fears. Drupal has been in its safe zone
+              for a long time.
+              * I'll tell what I tell my clients. You problem is not code. Lets sat we have the perfect machine
           </aside>
       </section>
 
@@ -800,6 +830,11 @@ class GroupSubscribeFormTest extends KernelTestBase {
             gizra
           </span>
         </div>
+
+        <aside class="notes" data-markdown>
+          * If I got you excited, and what I said made sense, and you happen to
+          be amazing developers - we're hiring.
+        </aside>
       </section>
 
 

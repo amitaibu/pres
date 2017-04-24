@@ -53,7 +53,9 @@ addedShirt =
 
 addedPants : AddedItem
 addedPants =
-    AddedItem pants 2
+    { item = pants
+    , quantity = 2
+    }
 
 
 type alias Cart =
