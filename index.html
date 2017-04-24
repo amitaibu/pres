@@ -45,20 +45,6 @@
     <div class="slides">
 
             <section>
-              <div style="font-size: 400%">
-                🐰
-              </div>
-              <aside class="notes" data-markdown>
-                * Alright, shut up
-              </aside>
-            </section>
-
-            <!-- Unio demo -->
-            <section>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/DyzDisv0mNc?rel=0" frameborder="0" allowfullscreen></iframe>
-            </section>
-
-            <section>
               <h1>
                 How We Develop Organic Groups 8 after 2 Years with Elm
               </h1>
@@ -93,6 +79,7 @@
       					<li>Customer is Happy</li>
       				</ul>
               <aside class="notes" data-markdown>
+                * Unholy trinity - all of them
               </aside>
             </section>
 
@@ -117,12 +104,26 @@
       				</ul>
 
               <aside class="notes" data-markdown>
+                * Don't listen to your clients.
+                * When I offer lunch to my kids. They ask everything. Fruit, Sandwich, Pizza, Pasta, Salad.
+                * Until I'm finished, obviously they hardly touch it.
+                * I'm starting patient, but it's horrible, because they know I'm not.
+                * And those small, manipulative bastards just get kick out of it.
+                * And then my wife joins, and starts with her accusations
+                * And I'm screaming at her, you and your mother will take me to the grave!
+                * Project is the sum of it's issues
+                * Setting the hours is setting the expectations
+                * Also self fullfiling prophesy - developer can code for ever.
+                * Time is more important than the task
+                * Escalation
+                * It applies also to contribution, where instead of money you have moral.
               </aside>
             </section>
 
             <section>
               <h2>Cost of bugs</h2>
               <aside class="notes" data-markdown>
+                  * For the crowd at home, I'm shaking my hand furiously.
                   * Bugs are very costly (even more than they might appear)
                   * Need to fix, costs you money
                   * Takes your time - deadline
@@ -141,9 +142,9 @@
               </aside>
             </section>
 
-            <!-- Unio image -->
+            <!-- Unio demo -->
             <section>
-              <img src="https://cloud.githubusercontent.com/assets/125707/25315791/acd4e038-2863-11e7-8d28-ce4dbf447a4f.jpg" alt="">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/DyzDisv0mNc?rel=0" frameborder="0" allowfullscreen></iframe>
             </section>
 
             <!-- Unio Backend -->
@@ -161,6 +162,7 @@
                     * It doesn't try to fix JS. But rather say, JS is wonderful, but as humans we shouldn't interact with it.
                     * Staticlly typed. It has an amazing compiler which makes sure there are no runtime exceptions. It's immutable.
                     * In general after years of Angualr 1, and playing a bit with React, Front end has became fun again.
+                    * Development is much faster and more stable than ever, Admitedlly, ever since I divied into Elm and FP I started using it I've started seeing the flaws in Drupal.
                 </aside>
             </section>
 
@@ -218,6 +220,7 @@ view model =
 
         </code></pre>
         <aside class="notes" data-markdown>
+          * Mandatory counter example, but soon we'll go over fancier examples.
        </aside>
       </section>
 
@@ -248,7 +251,13 @@ type Bool = False | True
       <section>
         <pre>
           <code class="elm" data-trim>
-type UserType = Anonymous | Authenticated String | Premium String Date
+type alias Name
+    = String
+
+type UserType
+    = Anonymous
+    | Authenticated Name
+    | Premium Name Date
           </code>
         </pre>
         <aside class="notes" data-markdown>
@@ -555,8 +564,6 @@ addStylesheet $ StaticR css_bootstrap_css
 
             <section>
                 <h2>Be your own devil's advocate</h2>
-
-                <iframe src="//giphy.com/embed/b5JsLz7ENp9m" width="480" height="363" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
             </section>
 
             <section>
@@ -735,19 +742,27 @@ class GroupSubscribeFormTest extends KernelTestBase {
       </section>
 
       <section>
+        <img src="https://cloud.githubusercontent.com/assets/125707/25322101/7cfcac66-28bc-11e7-9766-7dbe43aad77a.jpg" alt="">
+      </section>
+
+      <section>
+        <img src="https://cloud.githubusercontent.com/assets/125707/25322081/5971709c-28bc-11e7-8259-2bbb9e08fd29.jpg" alt="">
+      </section>
+
+      <section>
           <h2>Port Drupal to Haskell?</h2>
           <small>Probably no</small>
 
           <aside class="notes" data-markdown>
               * Approchable
-              * The huge community
+              * Huge community
               * Eco-system, Pantheon/ Platform/ Amazee IO
               * Monthly releases
               * Wednesday security releases
-              * Association
+              * DrupalCon, Drupal Association, Drupal Drama
               * Drush/ Drupal console
               * Tons of code we didn't have to write, or test
-              * 15 years of code - Experience!
+              * 15 years of experience!
           </aside>
       </section>
 
@@ -757,10 +772,6 @@ class GroupSubscribeFormTest extends KernelTestBase {
         <img src="https://cloud.githubusercontent.com/assets/125707/21802323/fcb4e440-d72d-11e6-8cb0-c90d9e0d34f8.jpg" alt="" />
       </section>
 
-      <!-- Gizra robot -->
-      <section>
-        <img src="https://cloud.githubusercontent.com/assets/125707/25312492/66c5ccb4-2823-11e7-9320-5b8d4dee5fa3.jpg" alt="">
-      </section>
 
       <!-- Last slide -->
       <section data-background="https://cloud.githubusercontent.com/assets/125707/11408842/6abc3708-93c4-11e5-8515-bf92a59cf8ea.jpg">
