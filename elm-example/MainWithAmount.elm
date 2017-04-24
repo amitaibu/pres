@@ -1,6 +1,6 @@
 module MainWithAmount exposing (..)
 
-import Html exposing (Html, div, text)
+import Html exposing (Html, div, text, ul, li)
 import Html.Attributes exposing (style)
 
 
@@ -9,6 +9,7 @@ main =
     div [ style styleWrapper ]
         [ text "Total cart: "
         , div [] [ text <| viewAmount <| getTotalCart cartWithItems ]
+        , viewCart cartWithItems
         ]
 
 
@@ -52,7 +53,7 @@ addedShirt =
 
 addedPants : AddedItem
 addedPants =
-    AddedItem pants 1
+    AddedItem pants 2
 
 
 type alias Cart =
@@ -87,8 +88,13 @@ getAmount =
 
 
 appendAmount : Amount -> Amount -> Amount
-appendAmount (Amount first) (Amount second) =
-    Amount (first + second)
+appendAmount (Amount firstAmount) (Amount secondAmount) =
+    Amount (firstAmount + secondAmount)
+
+
+multipleAmount : Int -> Amount -> Amount
+multipleAmount multipleBy (Amount amount) =
+    Amount (multipleBy * amount)
 
 
 viewAmount : Amount -> String
@@ -101,15 +107,31 @@ getTotalCart cart =
     List.foldl
         (\addedItem accum ->
             getAmount addedItem.item
+                |> multipleAmount addedItem.quantity
                 |> appendAmount accum
         )
         (Amount 0)
         cart.addedItems
 
 
+viewCart : Cart -> Html msg
+viewCart cart =
+    div [ style [ ( "margin-top", "50px" ) ] ]
+        [ text "Cart contents:"
+        , ul [ style [ ( "margin", "0" ) ] ]
+            (List.map
+                (\addedItem ->
+                    li [] [ text <| addedItem.item.name ++ " (" ++ toString addedItem.quantity ++ ")" ]
+                )
+                cart.addedItems
+            )
+        ]
+
+
 styleWrapper : List ( String, String )
 styleWrapper =
     [ ( "display", "flex" )
+    , ( "flex-direction", "column" )
     , ( "align-items", "center" )
     , ( "justify-content", "center" )
     , ( "margin-top", "100px" )

@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Html exposing (Html, div, text)
+import Html exposing (Html, div, text, ul, li)
 import Html.Attributes exposing (style)
 
 
@@ -9,6 +9,7 @@ main =
     div [ style styleWrapper ]
         [ text "Total cart: "
         , div [] [ text <| toString <| getTotalCart cartWithItems ]
+        , viewCart cartWithItems
         ]
 
 
@@ -48,7 +49,7 @@ addedShirt =
 
 addedPants : AddedItem
 addedPants =
-    AddedItem pants 1
+    AddedItem pants 2
 
 
 type alias Cart =
@@ -86,15 +87,30 @@ getTotalCart : Cart -> Int
 getTotalCart cart =
     List.foldl
         (\addedItem accum ->
-            getAmount addedItem.item + accum
+            (getAmount addedItem.item * addedItem.quantity) + accum
         )
         0
         cart.addedItems
 
 
+viewCart : Cart -> Html msg
+viewCart cart =
+    div [ style [ ( "margin-top", "50px" ) ] ]
+        [ text "Cart contents:"
+        , ul [ style [ ( "margin", "0" ) ] ]
+            (List.map
+                (\addedItem ->
+                    li [] [ text <| addedItem.item.name ++ " (" ++ toString addedItem.quantity ++ ")" ]
+                )
+                cart.addedItems
+            )
+        ]
+
+
 styleWrapper : List ( String, String )
 styleWrapper =
     [ ( "display", "flex" )
+    , ( "flex-direction", "column" )
     , ( "align-items", "center" )
     , ( "justify-content", "center" )
     , ( "margin-top", "100px" )

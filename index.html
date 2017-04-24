@@ -414,8 +414,8 @@ viewUser webDataUser =
 
 User
     ident Text
-    password Text Maybe
-    verkey Text Maybe -- Used for resetting passwords
+    password Text Maybe -- Password is optional
+    verkey Text Maybe
     verified Bool
     UniqueUser ident
     deriving Typeable
